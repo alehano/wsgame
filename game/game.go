@@ -2,7 +2,6 @@ package game
 
 import (
 	"fmt"
-	"github.com/alehano/wsgame/utils"
 	"log"
 )
 
