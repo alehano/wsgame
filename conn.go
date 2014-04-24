@@ -30,7 +30,7 @@ func (pc *playerConn) receiver() {
 func (pc *playerConn) sendState() {
 	go func() {
 		msg := pc.GetState()
-		err := pc.ws.WriteJSON(msg)
+		err := pc.ws.WriteMessage(msg)
 		if err != nil {
 			pc.room.leave <- pc
 			pc.ws.Close()

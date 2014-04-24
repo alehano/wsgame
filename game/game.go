@@ -23,12 +23,8 @@ func (p *Player) Command(command string) {
 	log.Print("Command: '", command, "' received by player: ", p.Name)
 }
 
-func (p *Player) GetState() interface{} {
-	data := struct {
-		Key   string
-		Value string
-	}{"state", "123456"}
-	return data
+func (p *Player) GetState() string {
+	return "Game state for Player: " + p.Name
 }
 
 func (p *Player) GiveUp() {
