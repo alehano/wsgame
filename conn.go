@@ -1,7 +1,7 @@
 package main
 
 import (
-	"game"
+	"github.com/alehano/wsgame/game"
 	"github.com/gorilla/websocket"
 )
 
