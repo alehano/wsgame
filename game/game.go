@@ -1,7 +1,6 @@
 package game
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -11,7 +10,7 @@ type Player struct {
 }
 
 func NewPlayer(name string) *Player {
-	player := &Player{name}
+	player := &Player{Name: name}
 	return player
 }
 
