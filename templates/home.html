@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+
+            var conn;
+            var command = $("#command");
+            var log = $("#log");
+
+            var name = window.prompt("Your name");
+
+
+            if (window["WebSocket"]) {
+                conn = new WebSocket("ws://{{.Host}}/ws?name=" + name);
+                conn.onopen = function() {
+                    console.log("Connected");
+                };
+                conn.onclose = function(evt) {
+                    console.log("Connection closed");
+                };
+                conn.onmessage = function(evt) {
+                    log.val(log.val() + '\n' + evt.data);
+                }
+            } else {
+                window.alert("Sorry, your device does not supported");
+            }
+
+            $("#send_command").click(function(){
+
+                conn.send(command.val());
+                command.val("");
+            });
+        });
+
+    </script>
+</head>
+<body>
+
+<h1>Hello</h1>
+<p>Active games: {{.RoomsCount}}</p>
+
+<input type="text" id="command" name="command" value="">
+<button id="send_command">Send</button>
+
+<br/>
+
+<textarea id="log" rows="10" cols="50"></textarea>
+
+</body>
+</html>
